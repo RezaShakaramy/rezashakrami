@@ -1,0 +1,555 @@
+/* Base Styles & Global Resets */
+        :root {
+            --primary-gradient-start: #667eea;
+            --primary-gradient-end: #764ba2;
+            --secondary-gradient-start: #f093fb;
+            --secondary-gradient-end: #f5576c;
+            --text-color: #333;
+            /* Used for portfolio content */
+            --card-bg: #fff;
+            /* Used for portfolio cards */
+            --border-radius: 12px;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --link-color: #4a90e2;
+            --link-hover-color: #3a7bd5;
+            --tech-tag-bg: #e0e0e0;
+            --tech-tag-color: #555;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            /* Changed to Vazirmatn for better availability */
+            background: #0a0a0a;
+            color: #ffffff;
+            overflow-x: hidden;
+            direction: rtl;
+            text-align: right;
+            /* Ensures text aligns correctly for RTL */
+            line-height: 1.6;
+            /* Added for better readability on portfolio section */
+        }
+
+        /* Background and Global Animations */
+        #canvas-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .content {
+            position: relative;
+            z-index: 2;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            backdrop-filter: blur(5px);
+            background: rgba(0, 0, 0, 0.3);
+            /* Added min-height to ensure full page coverage */
+            min-height: 100vh;
+        }
+
+        .hero-section {
+            text-align: center;
+            max-width: 800px;
+            margin-bottom: 3rem;
+            padding-top: 50px;
+            /* Adjust if content is too high initially */
+        }
+
+        h1 {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #00ff88, #00ccff, #ff6b6b, #ffd93d);
+            background-size: 400% 400%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 4s ease-in-out infinite;
+            text-shadow: 0 0 30px rgba(0, 255, 136, 0.3);
+        }
+
+        @keyframes gradientShift {
+
+            0%,
+            100% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        h2 {
+            font-size: clamp(1.2rem, 4vw, 2rem);
+            font-weight: 500;
+            margin-bottom: 2rem;
+            color: #b3b3b3;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.5s forwards;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease 1s forwards;
+        }
+
+        .skill-tag {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 0.7rem 1.2rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .skill-tag:hover {
+            background: rgba(0, 255, 136, 0.2);
+            border-color: #00ff88;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0, 255, 136, 0.3);
+        }
+
+        .ai-interests {
+            text-align: center;
+            margin-bottom: 3rem;
+            /* Increased margin for better separation */
+            opacity: 0;
+            animation: fadeInUp 1s ease 1.5s forwards;
+        }
+
+        .ai-interests p {
+            font-size: 1.1rem;
+            color: #cccccc;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .ai-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            justify-content: center;
+        }
+
+        .ai-tag {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .ai-tag:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .contact {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            animation: fadeInUp 1s ease 2s forwards;
+            max-width: 400px;
+            /* Constrain contact box width */
+            width: 100%;
+            margin: 3rem auto;
+            /* Center and add margin for separation */
+        }
+
+        .contact p {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: #e0e0e0;
+        }
+
+        .contact-info {
+            display: inline-block;
+            /* Allows padding and hover effects */
+            background: linear-gradient(135deg, #ff6b6b, #ffd93d);
+            padding: 0.8rem 1.5rem;
+            border-radius: 15px;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #000;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            user-select: none;
+            /* Prevent text selection on click */
+        }
+
+        .contact-info:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.4);
+        }
+
+        /* Floating elements background (smaller dots) */
+        .floating-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .floating-element {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #00ff88;
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-20px) rotate(180deg);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Background glows (larger, soft circles) */
+        .glow {
+            position: fixed;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0, 255, 136, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 0.3;
+            }
+
+            50% {
+                transform: scale(1.2);
+                opacity: 0.6;
+            }
+        }
+
+        /* --- Portfolio Section Styles --- */
+        .portfolio-section {
+            padding: 60px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(0, 0, 0, 0.5);
+            /* Slightly darker background for portfolio section */
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 50px;
+            /* Space from the bottom of the page */
+        }
+
+        .portfolio-title {
+            font-size: 2.8em;
+            color: #ffffff;
+            /* Adjusted color for dark background */
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .portfolio-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 50%;
+            transform: translateX(50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, #00ff88, #00ccff);
+            /* Adjusted gradient to match hero section theme */
+            border-radius: 2px;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 35px;
+        }
+
+        .project-card {
+            background-color: #1a1a1a;
+            /* Darker card background */
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            /* Stronger shadow for dark background */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            /* Subtle border */
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5em;
+            color: white;
+            /* Background gradients are already in HTML */
+        }
+
+        .project-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-title {
+            font-size: 1.8em;
+            color: #e0e0e0;
+            /* Lighter text for dark background */
+            margin-top: 0;
+            margin-bottom: 15px;
+            text-align: right;
+        }
+
+        .project-description {
+            font-size: 1em;
+            color: #b3b3b3;
+            /* Slightly lighter description text */
+            margin-bottom: 20px;
+            line-height: 1.7;
+            flex-grow: 1;
+            text-align: right;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+            margin-bottom: 25px;
+        }
+
+        .tech-tag {
+            background-color: rgba(255, 255, 255, 0.15);
+            /* Semi-transparent background */
+            color: #ffffff;
+            /* White text for tech tags */
+            padding: 8px 15px;
+            border-radius: 6px;
+            font-size: 0.9em;
+            font-weight: bold;
+            white-space: nowrap;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            /* Subtle border */
+        }
+
+        .project-links {
+            display: flex;
+            gap: 20px;
+            margin-top: auto;
+            justify-content: flex-end;
+            /* Align links to the right for RTL */
+        }
+
+        .project-link {
+            display: inline-block;
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #00ff88 0%, #00ccff 100%);
+            /* Green-blue gradient */
+            color: #0a0a0a;
+            /* Dark text for bright buttons */
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 4px 15px rgba(0, 255, 136, 0.2);
+        }
+
+        .project-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 255, 136, 0.3);
+        }
+
+        /* Specific link styling for the second project for variation */
+        .project-card:nth-child(2) .project-link {
+            background: linear-gradient(135deg, var(--secondary-gradient-start) 0%, var(--secondary-gradient-end) 100%);
+            color: #ffffff;
+            /* White text for pink-red gradient */
+            box-shadow: 0 4px 15px rgba(245, 87, 108, 0.3);
+        }
+
+        .project-card:nth-child(2) .project-link:hover {
+            box-shadow: 0 6px 20px rgba(245, 87, 108, 0.4);
+        }
+
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .portfolio-section {
+                padding: 40px 15px;
+            }
+
+            .projects-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 25px;
+            }
+
+            .project-link {
+                padding: 10px 20px;
+                font-size: 0.9em;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                padding: 1rem;
+            }
+
+            .portfolio-title {
+                font-size: 2.2em;
+                margin-bottom: 40px;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+                /* Stack cards on smaller screens */
+            }
+
+            .project-card {
+                margin: 0 10px;
+                /* Add some side margin for smaller screens */
+            }
+
+            .project-content {
+                padding: 20px;
+            }
+
+            .project-title {
+                font-size: 1.5em;
+            }
+
+            .project-description {
+                font-size: 0.95em;
+            }
+
+            .skills {
+                gap: 0.5rem;
+            }
+
+            .skill-tag {
+                padding: 0.5rem 1rem;
+                font-size: 0.8rem;
+            }
+
+            .ai-interests p {
+                font-size: 1em;
+            }
+
+            .ai-tag {
+                font-size: 0.8em;
+            }
+
+            .contact {
+                padding: 1.5rem;
+                margin-left: 10px;
+                margin-right: 10px;
+            }
+
+            .contact p {
+                font-size: 1em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-section {
+                padding-top: 30px;
+            }
+
+            h1 {
+                font-size: clamp(2.5rem, 10vw, 4rem);
+            }
+
+            h2 {
+                font-size: clamp(1rem, 5vw, 1.5rem);
+            }
+
+            .portfolio-section {
+                padding: 30px 10px;
+            }
+
+            .project-image {
+                height: 160px;
+                font-size: 4em;
+            }
+
+            .project-links {
+                flex-direction: column;
+                /* Stack links vertically */
+                gap: 15px;
+            }
+
+            .project-link {
+                width: 100%;
+                /* Full width buttons */
+                text-align: center;
+            }
+        }
